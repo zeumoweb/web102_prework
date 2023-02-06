@@ -158,8 +158,11 @@ const unfundeGgames = GAMES_JSON.filter((game) => {
     return game.pledged < game.goal;
 })
 
+const fundeGgames = GAMES_JSON.filter((game) => {
+    return game.pledged >= game.goal;
+})
 // create a string that explains the number of unfunded games using the ternary operator
-const displayStr = `A total of $${totalAmtRaised.toLocaleString("en-US")} has been raised for ${filterFundedOnly()} ${filterFundedOnly() > 1 ? "games" : "game"}.
+const displayStr = `A total of $${totalAmtRaised.toLocaleString("en-US")} has been raised for ${fundeGgames.length} ${fundeGgames.length > 1 ? "games" : "game"}.
 Currently, ${unfundeGgames.length} ${unfundeGgames.length > 1 ? "games" : "game"} remains unfunded. We need your help to fund these amazing games!`
  
 // create a new DOM element containing the template string and append it to the description container
